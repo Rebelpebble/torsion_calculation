@@ -2,12 +2,12 @@
 # the yeild strength of the material.
 YIELD_REDUCTION_FACTOR = 0.5
 
-length = raw_input("Length (in): ")
-width = raw_input("Width (in): ")
-material_thickness = raw_input("Material Thickness (in): ")
-force = raw_input("Force (lbs): ")
-moment_arm = raw_input("Moment Arm (in): ")
-shear_ultimate_strength = raw_input("Ultimate Shear Stress (psi): ")
+length = float(raw_input("Length (in): "))
+width = float(raw_input("Width (in): "))
+material_thickness = float(raw_input("Material Thickness (in): "))
+force = float(raw_input("Force (lbs): "))
+moment_arm = float(raw_input("Moment Arm (in): "))
+shear_ultimate_strength = float(raw_input("Ultimate Shear Stress (psi): "))
 
 mean_area = (length - material_thickness) * (width - material_thickness)
 
