@@ -1,30 +1,23 @@
-import math
+length = raw_input("Length (in): ")
+width = raw_input("Width (in): ")
+material_thickness = raw_input("Material Thickness (in): ")
+force = raw_input("Force (lbs): ")
+moment_arm = raw_input("Moment Arm (in): ")
+shear_ultimate_strength = raw_input("Ultimate Shear Stress (psi): ")
 
-l = 0.356 #in
-d = 0.205 #in
+mean_area = (length - material_thickness) * (width - material_thickness)
 
-t = (l - d) / 2
-print "t = %f in" % t #in
+torque = force * moment_arm # in*lbs
 
-# Calculate Am
-l_prime = l - t
-Am = l_prime ** 2
-print "Mean Area = %f in^2" % Am
+shear_stress = torque / (2 * material_thickness * mean_area)
 
-# Calculate Torque
-f = 5 #pounds
-arm = 1.5 * 12 #inches
-T = f * arm # in*lbs
-print "Torque = %f in*lbs" % T
+# Take 50% of the ultimate shear strength for a conservative estimate of
+# the yeild strength of the material.
+shear_yeild_strength = shear_ultimate_strength / 2.0
 
-# Calculate Shear
-c = math.sqrt(2 * ((l / 2) ** 2))
-tau = T / (2 * c * Am)
-print "tau = %f psi" % tau
+reserve_factor = shear_yeild_strength / shear_stress
 
-tsu = 35000 #psi
-Vu = tsu * 0.5
-RF = Vu / tau
-print "RF = %f" % RF
-
-print "Done"
+print "Mean Area = %f in^2" % mean_area
+print "Torque = %f in*lbs" % torque
+print "Shear Stress = %f psi" % shear_stress
+print "Reserve Factor = %f" % reserve_factor
