@@ -1,3 +1,5 @@
+import math
+
 l = 0.356 #in
 d = 0.205 #in
 
@@ -16,7 +18,6 @@ T = f * arm # in*lbs
 print "Torque = %f in*lbs" % T
 
 # Calculate Shear
-import math
 c = math.sqrt(2 * ((l / 2) ** 2))
 tau = T / (2 * c * Am)
 print "tau = %f psi" % tau
